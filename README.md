@@ -31,7 +31,7 @@ mvn -Dtest=JDGTests test
 
 6- Look into the test output if got the stored value "testValue" + new Date():
 
-~~~
+
 -------------------------------------------------------
  T E S T S
 -------------------------------------------------------
@@ -44,9 +44,9 @@ Requesting cache {}testCache
 Mar 28, 2020 5:37:57 PM org.infinispan.client.hotrod.impl.protocol.Codec20 readNewTopologyAndHash
 INFO: ISPN004006: Server sent new topology view (id=1, age=0) containing 1 addresses: [127.0.0.1:11222]
 Got {}org.infinispan.client.hotrod.impl.RemoteCacheImpl@3967e60c
-Get the value: testValueSat Mar 28 17:37:56 COT 2020
+Get the value: ***testValueSat Mar 28 17:37:56 COT 2020***
 Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.538 sec
-~~~
 
 
-7- If want to change the RHDG/Infinispan version can edit the pom.xml in the     <dependencyManagement> section
+
+7- If want to change the RHDG/Infinispan version can edit the pom.xml in the  ****dependencyManagement**** section
