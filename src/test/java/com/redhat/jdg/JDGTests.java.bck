@@ -1,0 +1,71 @@
+package com.redhat.jdg;
+
+import org.infinispan.client.hotrod.RemoteCache;
+import org.infinispan.client.hotrod.RemoteCacheManager;
+import org.infinispan.client.hotrod.configuration.ConfigurationBuilder;
+import org.infinispan.client.hotrod.configuration.NearCacheMode;
+import org.junit.Test;
+
+import java.io.IOException;
+
+import static org.junit.Assert.*;
+
+public class JDGTests {
+
+    // JDG 7.3.2
+    private static final String HOST = "datagrid-service-hotrod-route-grid11.192.168.42.60.nip.io";
+    private static final int PORT = 443; //Hotrod
+
+    private static final String HOST2 = "127.0.0.1";
+    private static final int PORT2 = 12222; //Hotrod
+
+    private static final String CACHE_NAME = "JDG_TEST"; 
+    private static final String KEY = "KEY1";
+    private static final String VALUE = "VALUE1";
+
+    private static ConfigurationBuilder createClientWithoutNearCache() {
+        final ConfigurationBuilder builder = new ConfigurationBuilder();
+        builder.addServer().host(HOST).port(PORT).validate();
+        //.addServer().host(HOST2).port(PORT2).validate();
+        return builder;
+    }
+
+//    private static ConfigurationBuilder createClientWithNearCache() {
+//        final ConfigurationBuilder builder = createClientWithoutNearCache();
+//        builder.nearCache().cacheNamePattern(CACHE_NAME).maxEntries(-1).mode(NearCacheMode.INVALIDATED);
+//	return builder;
+//    }
+
+    @Test
+    public void testSerializationWithoutNearCache() {
+	System.out.println("--- Starts test WithoutNearCache ---");
+        try {
+			storeAndRetrieve(createClientWithoutNearCache());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+
+//    @Test
+//    public void testSerializationWithNearCache() {
+//	System.out.println("--- Starts test WithNearCache ---");
+//        storeAndRetrieve(createClientWithNearCache());
+//    }
+
+    private void storeAndRetrieve(ConfigurationBuilder cfg) throws IOException {
+        System.out.println("--- Connect to cluster ---");
+        final RemoteCacheManager remoteCacheManager = new RemoteCacheManager(cfg.build());
+		System.out.println("--- Get cache reference ---");
+		final RemoteCache<Object, Object> cache = remoteCacheManager.getCache(CACHE_NAME);
+		assertNotNull("Cache is null", cache);
+
+		cache.put(KEY, VALUE);
+
+		System.out.printf("--- [Retrieve Bean] Retrieve key='%s' ---%n", KEY);
+		final Object value = cache.get(KEY);
+
+		System.out.printf("--- [Retrieve Bean] Value is '%s' ---%n", value);
+		assertEquals("[Retrieve Bean] Expected value to be '" + VALUE + "' but was: " + value, VALUE, value);
+    }
+}
