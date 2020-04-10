@@ -11,7 +11,7 @@ git clone https://github.com/alexbarbosa1989/HotRodClient-TestCache
 
 2- Download RHDG 7.3.1 in Red Hat Customer Portal or Infinispan Server 9.4.15
 
-3- Add a distributed cache named testCache in clustered.xml file into Infinispan Subsystem:
+3- (Optional - The code will add the cache if doesn't exists in the Data Grid cluster) Add a distributed cache named testCache in clustered.xml file into Infinispan Subsystem:
 
 ~~~
 <distributed-cache name="testCache"/>
