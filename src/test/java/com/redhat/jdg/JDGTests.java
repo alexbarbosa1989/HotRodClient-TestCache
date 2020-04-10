@@ -17,8 +17,8 @@ public class JDGTests {
     
     private static final String HOST1 = "127.0.0.1";
     private static final int PORT1 = 11222; 
-    private static final String HOST2 = "127.0.0.1";
-    private static final int PORT2 = 11322; 
+//    private static final String HOST2 = "127.0.0.1";
+//    private static final int PORT2 = 11322; 
     
     RemoteCacheManager manager;
 
@@ -27,7 +27,7 @@ public class JDGTests {
         ConfigurationBuilder builder = new ConfigurationBuilder();
         builder.connectionPool().maxActive(5).minIdle(3).maxWait(60000)
         .addServer().host(HOST1).port(PORT1)
-        .addServer().host(HOST2).port(PORT2)
+//        .addServer().host(HOST2).port(PORT2)
         .validate()
         ;
         
