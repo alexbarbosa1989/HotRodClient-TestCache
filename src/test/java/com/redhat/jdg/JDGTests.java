@@ -49,6 +49,11 @@ public class JDGTests {
         
     }
 
+   /**
+     * TESTED CACHE OPTIONS        
+     * org.infinispan.LOCAL
+     * org.infinispan.DIST_SYNC           
+     */
     private RemoteCache<String, String> getCache(String cacheName) {
     	System.out.println("Requesting cache: "+ cacheName);
         RemoteCache<Object, Object> cache = manager.getCache(cacheName);
