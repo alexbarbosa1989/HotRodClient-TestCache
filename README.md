@@ -1,5 +1,5 @@
 # HotRodClient-TestCache
-HotRodClient-TestCache
+HotRodClient-TestCache (Current branch code is based on Data Grid Tutorial https://github.com/redhat-developer/redhat-datagrid-tutorials/tree/RHDG_8.3.1/infinispan-remote/query)
 
 
 Need a running RHDG instance (RHDG 8.3 or upper)
