@@ -10,4 +10,4 @@ mvn clean package exec:exec
 ~~~
 
 
-The app automatically create a cache and execute the query.
+The app automatically create a cache and execute the query. The connection, cache and query details can modified in RHDGTests.java
