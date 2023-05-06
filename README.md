@@ -6,7 +6,7 @@ Basic HotRod Client to tests distributed RHDG cache.
 1- Donwload or clone the project
 
 ~~~
-git clone https://github.com/alexbarbosa1989/HotRodClient-TestCache
+git clone -b master https://github.com/alexbarbosa1989/HotRodClient-TestCache
 ~~~
 
 2- Download RHDG 7.3.1 in Red Hat Customer Portal or Infinispan Server 9.4.15
