@@ -9,9 +9,8 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <java.version>11</java.version>
-		<infinispan>13.0.10.Final-redhat-00001</infinispan>
-		<version.protostream>4.4.1.Final-redhat-00004</version.protostream>
+        <java.version>17</java.version>
+        <infinispan>13.0.10.Final-redhat-00001</infinispan>
     </properties>
 
     <dependencyManagement>
@@ -40,29 +39,18 @@
 			<version>${infinispan}</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.infinispan</groupId>
-			<artifactId>infinispan-query-dsl</artifactId>
-			<version>${infinispan}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.infinispan</groupId>
-			<artifactId>infinispan-remote-query-client</artifactId>
-			<version>${infinispan}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.infinispan.protostream</groupId>
-			<artifactId>protostream-processor</artifactId>
-			<version>${version.protostream}</version>
-		</dependency>
-
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.13.1</version>
             <scope>test</scope>
+        </dependency>
+
+		<!--  necessary to use deprecated JBossMarshalling -->
+        <dependency>
+            <groupId>org.infinispan</groupId>
+            <artifactId>infinispan-jboss-marshalling</artifactId>
+			<version>${infinispan}</version>
         </dependency>
 
     </dependencies>
@@ -107,7 +95,7 @@
                 <executions>
                     <execution>
                         <goals>
-                            <goal>exec</goal>
+                            <goal>java</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -116,11 +104,20 @@
                     <arguments>
                         <argument>-Djava.net.preferIPv4Stack=true</argument>
                         <argument>-Djava.util.logging.config.file=src/main/resources/logging.properties</argument>
-                        <argument>-classpath</argument>
-                        <classpath />
-                        <argument>com.redhat.rhdg.RHDGTests</argument>
                     </arguments>
+                    <mainClass>com.redhat.rhdg.RHDGTests</mainClass>
                 </configuration>
+            </plugin>
+			<plugin>
+                 <groupId>org.apache.maven.plugins</groupId>
+                 <artifactId>maven-surefire-plugin</artifactId>
+                 <version>3.1.0</version>
+                 <configuration>
+                   <argLine>
+                    --add-opens java.base/java.util=ALL-UNNAMED
+                    --add-opens java.base/java.util.concurrent=ALL-UNNAMED
+                   </argLine>
+                 </configuration>
             </plugin>
 		</plugins>
 	</build>
