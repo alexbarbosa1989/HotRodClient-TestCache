@@ -14,4 +14,11 @@ In this case, the `pom.xml` already contains the required JAVA_OPTIONS to run co
 --add-opens java.base/java.util=ALL-UNNAMED --add-opens java.base/java.util.concurrent=ALL-UNNAMED"
 ~~~
 
+Alternativey, can be used the **MAVEN_OPTS** environment variable to set the `--add-opens` options:
+~~~
+export MAVEN_OPTS="--add-opens java.base/java.util=ALL-UNNAMED --add-opens java.base/java.util.concurrent=ALL-UNNAMED"
+
+mvn clean package exec:java
+~~~
+
 The app automatically create a cache and execute the query. The connection, cache and query details can modified in the RHDGTests.java class
