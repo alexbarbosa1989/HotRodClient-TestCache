@@ -10,8 +10,8 @@
 
     <properties>
         <java.version>11</java.version>
-		<infinispan>13.0.10.Final-redhat-00001</infinispan>
-		<version.protostream>4.4.1.Final-redhat-00004</version.protostream>
+		<infinispan>14.0.11.Final-redhat-00001</infinispan>
+		<version.protostream>4.6.2.Final-redhat-00002</version.protostream>
     </properties>
 
     <dependencyManagement>
