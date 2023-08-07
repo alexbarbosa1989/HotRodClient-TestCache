@@ -1,13 +1,10 @@
 # HotRodClient-TestCache
-HotRodClient-TestCache (Current branch code is based on Data Grid Tutorial https://github.com/redhat-developer/redhat-datagrid-tutorials/tree/RHDG_8.3.1/infinispan-remote/query)
+Data Grid cache encoding tests:
 
+- datagrid-jboss-marshalling=implements the generic GenericJBossMarshaller to store and retreive data.
+- datagrid-protostream=implements protostream to store and retreive structured data. 
 
-Need a running RHDG instance (RHDG 8.3 or upper)
+Requires a running RHDG instance (RHDG 8.3 or upper)
+Current branch was developed and tested using Data Grid 8.4 and OpenJDK 11
 
-Then execute:
-~~~
-mvn clean package exec:exec
-~~~
-
-
-The app automatically create a cache and execute the query. The connection, cache and query details can modified in the RHDGTests.java class
+More info about cache encoding and marshalling can be found in the [Data Grid Documentation](https://access.redhat.com/documentation/en-us/red_hat_data_grid/8.4/html-single/cache_encoding_and_marshalling/index#cache-encoding)
