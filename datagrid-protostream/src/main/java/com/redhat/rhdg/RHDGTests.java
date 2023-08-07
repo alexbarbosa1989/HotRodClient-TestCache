@@ -7,13 +7,9 @@ import org.infinispan.client.hotrod.configuration.ClientIntelligence;
 import org.infinispan.client.hotrod.configuration.ConfigurationBuilder;
 import org.infinispan.client.hotrod.impl.ConfigurationProperties;
 import org.infinispan.protostream.GeneratedSchema;
-import org.infinispan.query.dsl.Query;
-import org.infinispan.query.dsl.QueryFactory;
-import org.infinispan.client.hotrod.Search;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import static org.infinispan.query.remote.client.ProtobufMetadataManagerConstants.PROTOBUF_METADATA_CACHE_NAME;
 
@@ -22,7 +18,7 @@ public class RHDGTests {
    public static final String USER = "admin";
    public static final String PASSWORD = "admin";
 
-   public static final String TUTORIAL_CACHE_NAME = "books";
+   public static final String TUTORIAL_CACHE_NAME = "library";
    public static final String HOST = "127.0.0.1";
 
    public static final String TUTORIAL_CACHE_CONFIG =
@@ -37,7 +33,8 @@ public class RHDGTests {
     */
    public static final ConfigurationBuilder connectionConfig() {
     ConfigurationBuilder builder = new ConfigurationBuilder();
-    builder.addServer().host("127.0.0.1").port(ConfigurationProperties.DEFAULT_HOTROD_PORT).security()
+    builder.addServer().host("127.0.0.1").port(ConfigurationProperties.DEFAULT_HOTROD_PORT)
+          .security()
           .authentication()
           //Add user credentials.
           .username(USER)
@@ -66,37 +63,34 @@ public class RHDGTests {
    // Create and add the Protobuf schema in the server
    addPersonSchema(client);
 
-   // Get the books cache, create it if needed with the default configuration
-   RemoteCache<String, Book> bookCache = client.getCache("books");
+    // Get the books cache, create it if needed with the default configuration
+   RemoteCache<String, Library> twoListCache = client.getCache(TUTORIAL_CACHE_NAME);
 
-   // Create the persons dataset to be stored in the cache
-   Map<String, Book> book = new HashMap<>();
-   book.put("Key1", new Book("Book1", "Description1", 2022));
-   book.put("Key2", new Book("Book2", "Description2", 2023));
+   Book bin1 = new Book("Book1", "Description1", 2020);
+   Book bin2 = new Book("Book2", "Description2", 2021);
 
-   // Put all the values in the cache
-   bookCache.putAll(book);
+   Book bin3 = new Book("Book3", "Description3", 2022);
+   Book bin4 = new Book("Book4", "Description4", 2023);
 
-   // Get a query factory from the cache
-   QueryFactory queryFactory = Search.getQueryFactory(bookCache);
+   ArrayList<Book> listOne = new ArrayList<>();
+   ArrayList<Book> listTwo = new ArrayList<>();
+   listOne.add(bin1);
+   listOne.add(bin2);
+   listTwo.add(bin3);
+   listTwo.add(bin4);
 
-   // Create a query with lastName parameter
-   Query query = queryFactory.create("FROM books.Book WHERE publicationYear = :year");
+   Library lib1 = new Library(listOne);
+   Library lib2 = new Library(listTwo);
 
-   // Set the parameter value
-   query.setParameter("year",2022);
+   // Add first list of bins to map
+   twoListCache.put("one", lib1);     
+   // Access the first list in the cache and compare with the original list
+   twoListCache.get("one");
 
-   // Execute the query
-   List<Book> bookList = query.execute().list();
-
-   // iterate query result list for verifying
-	for (Book itbook : bookList) {
-			System.out.println(itbook.title);
-			System.out.println(itbook.publicationYear);
-	}
-
-   // Print the results
-   System.out.println(bookList);
+   // Add first list of bins to map
+   twoListCache.put("two", lib2);     
+   // Access the first list in the cache and compare with the original list
+   twoListCache.get("two");
 
    // Stop the client and release all resources
    client.stop();

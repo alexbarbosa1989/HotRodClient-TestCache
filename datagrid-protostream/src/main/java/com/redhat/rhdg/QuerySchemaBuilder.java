@@ -7,8 +7,9 @@ import org.infinispan.protostream.annotations.AutoProtoSchemaBuilder;
 // book_sample must be defined as indexed-entity in the RHDG server cache "books"
 @AutoProtoSchemaBuilder(
 	      includeClasses = {
-	            Book.class
+			    Book.class,
+	            Library.class
 	      },
-	      schemaPackageName = "books")
+	      schemaPackageName = "library")
 public interface QuerySchemaBuilder extends GeneratedSchema {
 }

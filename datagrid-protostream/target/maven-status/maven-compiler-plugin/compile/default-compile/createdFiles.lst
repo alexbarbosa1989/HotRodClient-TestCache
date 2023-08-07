@@ -1,0 +1,8 @@
+com/redhat/rhdg/QuerySchemaBuilderImpl.class
+com/redhat/rhdg/RHDGTests.class
+com/redhat/rhdg/Book$___Marshaller_edad2646f60fcab9e15d5858b62e461fb74fa776ff9dd39ee7637c672fe25acb.class
+com/redhat/rhdg/Library$___Marshaller_a9293022356431240d2c3103496b1af3b62c3ae594463288173fe62b68f0ec9e.class
+com/redhat/rhdg/Book.class
+com/redhat/rhdg/Library.class
+META-INF/services/org.infinispan.protostream.SerializationContextInitializer
+com/redhat/rhdg/QuerySchemaBuilder.class
