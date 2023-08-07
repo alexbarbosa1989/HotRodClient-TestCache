@@ -8,7 +8,7 @@ The current project requires a running RHDG instance (RHDG 8.3 or upper). It was
 
 To clone the current project's branch:
 ~~~
-git clone -b marshallers https://github.com/alexbarbosa1989/HotRodClient-TestCache/
+git clone -b RHDG_8.4 https://github.com/alexbarbosa1989/HotRodClient-TestCache/
 ~~~
 
 
