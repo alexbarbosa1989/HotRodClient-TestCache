@@ -74,12 +74,16 @@ public class RHDGTests {
    // Add first list of bins to map
    twoListCache.put("one", listOne);     
    // Access the first list in the cache and compare with the original list
-   twoListCache.get("one");
+   List<Book> result1= twoListCache.get("one");
+
+   System.out.println("Return list of books, contains "+result1.size()+" books");
 
    // Add first list of bins to map
    twoListCache.put("two", listTwo);     
    // Access the first list in the cache and compare with the original list
-   twoListCache.get("two");
+   List<Book> result2= twoListCache.get("one");
+
+   System.out.println("Return list of books, contains "+result2.size()+" books");
 
    // Stop the client and release all resources
    client.stop();

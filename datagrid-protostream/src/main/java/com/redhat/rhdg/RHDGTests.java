@@ -9,7 +9,6 @@ import org.infinispan.client.hotrod.impl.ConfigurationProperties;
 import org.infinispan.protostream.GeneratedSchema;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import static org.infinispan.query.remote.client.ProtobufMetadataManagerConstants.PROTOBUF_METADATA_CACHE_NAME;
 
@@ -85,12 +84,17 @@ public class RHDGTests {
    // Add first list of bins to map
    twoListCache.put("one", lib1);     
    // Access the first list in the cache and compare with the original list
-   twoListCache.get("one");
+   Library result1=twoListCache.get("one");
+
+   System.out.println("Library contains "+result1.books.size()+" Books");
 
    // Add first list of bins to map
    twoListCache.put("two", lib2);     
    // Access the first list in the cache and compare with the original list
-   twoListCache.get("two");
+   Library result2=twoListCache.get("two");
+
+   System.out.println("Library contains "+result2.books.size()+" Books");
+
 
    // Stop the client and release all resources
    client.stop();
