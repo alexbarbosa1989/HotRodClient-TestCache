@@ -4,7 +4,7 @@ Data Grid cache encoding tests:
 - datagrid-jboss-marshalling: implements the generic GenericJBossMarshaller to store and retrieve data.
 - datagrid-protostream: implements protostream to store and retrieve structured data. 
 
-The current project requires a running RHDG instance (RHDG 8.3 or upper). It was developed and tested using Data Grid 8.4 and OpenJDK 11.
+The current project requires a running RHDG instance. It was developed and tested using Data Grid 8.4 and OpenJDK 11.
 
 To clone the current project's branch:
 ~~~
