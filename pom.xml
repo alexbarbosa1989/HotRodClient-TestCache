@@ -66,8 +66,8 @@
 	</build>
 
 	<modules>
-        <module>datagrid-jboss-marshalling</module>
-        <module>datagrid-protostream</module>
+          <module>datagrid-jboss-marshalling</module>
+          <module>datagrid-protostream</module>
 	</modules>
 
     <repositories>
