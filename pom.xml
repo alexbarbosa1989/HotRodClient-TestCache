@@ -57,7 +57,7 @@
 						<id>project-sources-archive</id>
 						<phase>initialize</phase>
 						<goals>
-							<goal>archive</goal>
+						   <goal>archive</goal>
 						</goals>
 					</execution>
 				</executions>
