@@ -16,7 +16,7 @@ Each project should be compilated and executed separately:
   ~~~
   mvn clean package exec:exec
   ~~~
-- To execute datagrid-protostream go to HotRodClient-TestCache/datagrid-protostream and then execute:
+- To execute datagrid-protostream go to HotRodClient-TestCache/datagrid-protostream directory and then execute:
   ~~~
   mvn clean package exec:exec
   ~~~
