@@ -11,7 +11,7 @@ To clone the current project's branch:
 git clone -b RHDG_8.4 https://github.com/alexbarbosa1989/HotRodClient-TestCache/
 ~~~
 
-Each project should be compilated and executed separately. 
+Each project should be compilated and executed separately: 
 - To execute datagrid-jboss-marshalling go to HotRodClient-TestCache/datagrid-jboss-marshalling directory and then execute:
   ~~~
   mvn clean package exec:exec
